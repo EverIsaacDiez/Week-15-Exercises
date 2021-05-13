@@ -10,16 +10,17 @@ class LoginPage extends Page {
     get inputUsername () { return $('#user-name') }
     get inputPassword () { return $('#password') }
     get btnSubmit () { return $('#login-button') }
-    //get errorLoginMssg () { return $('form>div[class="error-message-container error"]>h3').getText()}
+    get errorLoginMssg () { return $('form>div[class="error-message-container error"]>h3').getText()}
+    get srcOfProductPhoto () {return $('div[id=inventory_container]>img').getAttribute("src")}
 
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
     async login (username, password) {
-        await (await this.inputUsername).setValue(username);
-        await (await this.inputPassword).setValue(password);
-        await (await this.btnSubmit).click();
+        this.inputUsername.setValue(username);
+        this.inputPassword.setValue(password);
+        this.btnSubmit.click();
     }
 
     /**
