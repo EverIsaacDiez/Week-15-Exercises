@@ -39,13 +39,12 @@ describe('Locked user test',() => {
 })
  
 describe('Problem user test',()=>{
-/*
+
   it('Should login with problem_user',  () => {
     LoginPage.open('');
     LoginPage.login('problem_user', 'secret_sauce');
-    expect(LoginPage.srcOfProductPhoto).toBe("static/media/sl-404.168b1cce.jpg");
+    expect(LoginPage.srcOfProductPhoto).toBe("https://www.saucedemo.com/static/media/sl-404.168b1cce.jpg");
   });
-*/    
 })
 /*
 describe('Performance user test',()=>{

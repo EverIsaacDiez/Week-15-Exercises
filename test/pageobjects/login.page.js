@@ -11,8 +11,8 @@ class LoginPage extends Page {
     get inputPassword () { return $('#password') }
     get btnSubmit () { return $('#login-button') }
     get errorLoginMssg () { return $('form>div[class="error-message-container error"]>h3').getText()}
-    get srcOfProductPhoto () {return $('div[id=inventory_container]>img').getAttribute("src")}
-
+    get srcOfProductPhoto () { return $('img[src="/static/media/sl-404.168b1cce.jpg"]').getAttribute('src')}
+    
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
