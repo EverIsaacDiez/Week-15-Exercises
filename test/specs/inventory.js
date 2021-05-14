@@ -64,10 +64,10 @@ describe('Cart', () => {
 
 /*
 describe('SEGUIR ACA', () => {
-    it('Check if add to cart',  () => {
+    it('',  () => {
         loginPage.open('');
         loginPage.login('', '');
-        expect(loginPage.errorLoginMssg).toBe("Epic sadface: Username is required");
+        expect().toBe("");
       });
 })
 */
