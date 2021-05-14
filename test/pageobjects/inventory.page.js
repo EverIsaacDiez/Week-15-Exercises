@@ -26,6 +26,15 @@ class inventoryPage extends Page {
     get fourthPrice () { return $('#inventory_container > div > div:nth-child(4) > div.inventory_item_description > div.pricebar > div').getText()}
     get fivethPrice () { return $('#inventory_container > div > div:nth-child(5) > div.inventory_item_description > div.pricebar > div').getText()}
     get sixthPrice () { return $('#inventory_container > div > div:nth-child(6) > div.inventory_item_description > div.pricebar > div').getText()}
+    //Button add to cart
+    get firstBtnAddToCart () { return $('#add-to-cart-sauce-labs-backpack')}
+    get secondBtnAddToCart () { return $('#add-to-cart-sauce-labs-bike-light')}
+    get thirdBtnAddToCart () { return $('#add-to-cart-sauce-labs-bolt-t-shirt')}
+    get fourthBtnAddToCart () { return $('#add-to-cart-sauce-labs-fleece-jacket')}
+    get fivethBtnAddToCart () { return $('#add-to-cart-sauce-labs-onesie')}
+    get sixthBtnAddToCart () { return $('button[id="add-to-cart-test.allthethings()-t-shirt-(red)"]')}
+    //Number of cart
+    get numOfCart () { return $('#shopping_cart_container > a[class=shopping_cart_link]').getText()}
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
@@ -47,6 +56,24 @@ async highToLowClick () {
   this.highToLowFilter.click();
 }
 
+async firstBtnAddToCartClick(){
+  this.firstBtnAddToCart.click();
+}
+async secondBtnAddToCartClick(){
+  this.secondBtnAddToCart.click();
+}
+async thirdBtnAddToCartClick(){
+  this.thirdBtnAddToCart.click();
+}
+async fourthBtnAddToCartClick(){
+  this.fourthBtnAddToCart.click();
+}
+async fivethBtnAddToCartClick(){
+  this.fivethBtnAddToCart.click();
+}
+async sixthBtnAddToCartClick(){
+  this.sixthBtnAddToCart.click();
+}
 //Check if word is less than word2
 orderedLowToHigh(word, word2){
   const minimum = Math.min(word.length,word2.length);
@@ -57,7 +84,7 @@ orderedLowToHigh(word, word2){
   return 1;
 }
 
-orderedPriceLowToHihg(num, num2){
+orderedPriceLowToHigh(num, num2){
   if(num <= num2) return 1;
   else return 0;
 }

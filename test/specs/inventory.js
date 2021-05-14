@@ -29,27 +29,42 @@ describe('Filter tests', () => {
         inventoryPage.open('');
         loginPage.login('standard_user','secret_sauce');
         inventoryPage.lowToHighClick();
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.firstPrice.slice(1)), parseInt(inventoryPage.secondPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.secondPrice.slice(1)), parseInt(inventoryPage.thirdPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.thirdPrice.slice(1)), parseInt(inventoryPage.fourthPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.fourthPrice.slice(1)), parseInt(inventoryPage.fivethPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.fivethPrice.slice(1)), parseInt(inventoryPage.sixthPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.firstPrice.slice(1)), parseInt(inventoryPage.secondPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.secondPrice.slice(1)), parseInt(inventoryPage.thirdPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.thirdPrice.slice(1)), parseInt(inventoryPage.fourthPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.fourthPrice.slice(1)), parseInt(inventoryPage.fivethPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.fivethPrice.slice(1)), parseInt(inventoryPage.sixthPrice.slice(1)))).toBe(1);
     });
 
     it('Price high to low',  () => {
         inventoryPage.open('');
         loginPage.login('standard_user','secret_sauce');
         inventoryPage.highToLowClick();
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.sixthPrice.slice(1)), parseInt(inventoryPage.fivethPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.fivethPrice.slice(1)), parseInt(inventoryPage.fourthPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.fourthPrice.slice(1)), parseInt(inventoryPage.thirdPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.thirdPrice.slice(1)), parseInt(inventoryPage.secondPrice.slice(1)))).toBe(1);
-        expect(inventoryPage.orderedPriceLowToHihg(parseInt(inventoryPage.secondPrice.slice(1)), parseInt(inventoryPage.firstPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.sixthPrice.slice(1)), parseInt(inventoryPage.fivethPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.fivethPrice.slice(1)), parseInt(inventoryPage.fourthPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.fourthPrice.slice(1)), parseInt(inventoryPage.thirdPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.thirdPrice.slice(1)), parseInt(inventoryPage.secondPrice.slice(1)))).toBe(1);
+        expect(inventoryPage.orderedPriceLowToHigh(parseInt(inventoryPage.secondPrice.slice(1)), parseInt(inventoryPage.firstPrice.slice(1)))).toBe(1);
       });
 })
+
+describe('Cart', () => {
+    it('Cart number is equal to the amount of click on add to cart',  () => {
+        loginPage.open('');
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.firstBtnAddToCartClick();
+        inventoryPage.secondBtnAddToCartClick();
+        inventoryPage.thirdBtnAddToCartClick();
+        inventoryPage.fourthBtnAddToCartClick();
+        inventoryPage.fivethBtnAddToCartClick();
+        inventoryPage.sixthBtnAddToCartClick();
+        expect(parseInt(inventoryPage.numOfCart)).toBe(6);
+      });
+})
+
 /*
-describe('', () => {
-    it('',  () => {
+describe('SEGUIR ACA', () => {
+    it('Check if add to cart',  () => {
         loginPage.open('');
         loginPage.login('', '');
         expect(loginPage.errorLoginMssg).toBe("Epic sadface: Username is required");

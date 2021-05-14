@@ -1,6 +1,5 @@
 const LoginPage = require('../pageobjects/login.page');
 
-
 describe('Standard user tests', () => {
 
   it('Should login with empty characters',  () => {
