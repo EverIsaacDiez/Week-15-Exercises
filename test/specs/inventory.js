@@ -1,3 +1,4 @@
+const cartPage = require('../pageobjects/cart.page');
 const inventoryPage = require('../pageobjects/inventory.page');
 const loginPage = require('../pageobjects/login.page');
 
@@ -59,15 +60,59 @@ describe('Cart', () => {
         inventoryPage.fivethBtnAddToCartClick();
         inventoryPage.sixthBtnAddToCartClick();
         expect(parseInt(inventoryPage.numOfCart)).toBe(6);
+        inventoryPage.firstBtnRemoveClick();
+        inventoryPage.secondBtnRemoveClick();
+        inventoryPage.thirdBtnRemoveClick();
+        inventoryPage.fourthBtnRemoveClick();
+        inventoryPage.fivethBtnRemoveClick();
+        inventoryPage.sixthBtnRemoveClick();
+      });
+      it('Checks if the click to the cart redirects to its page', () => {
+        loginPage.open('');
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.cartBtnClick();
+        expect(browser).toHaveUrl('https://www.saucedemo.com/cart.html');
+      });
+      
+      it('Checks if clicking "add to cart" button adds to cart', () => {
+        loginPage.open('');
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.secondBtnAddToCartClick();
+        inventoryPage.fivethBtnAddToCartClick();
+        inventoryPage.cartBtnClick();
+        expect(cartPage.cartList2).toBe('Sauce Labs Bike Light');
+        expect(cartPage.cartList5).not.toBe('Sauce Labs Fleece Jacket');
+        expect(cartPage.cartList5).toBe('Sauce Labs Onesie');
+        loginPage.open('inventory.html');
+        inventoryPage.secondBtnRemoveClick();
+        inventoryPage.fivethBtnRemoveClick();
       });
 })
 
-/*
-describe('SEGUIR ACA', () => {
-    it('',  () => {
+describe('Options button', () => {
+    it('All items button',  () => {
         loginPage.open('');
-        loginPage.login('', '');
-        expect().toBe("");
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.allItemsBtnClick();
+        expect(browser).toHaveUrl("https://www.saucedemo.com/inventory.html");
+      });
+      it('About button',  () => {
+        loginPage.open('');
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.aboutBtnClick();
+        expect(browser).toHaveUrl("https://saucelabs.com/");
+      });
+      it('Log out button',  () => {
+        loginPage.open('');
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.logOutBtnClick();
+        expect(browser).toHaveUrl("https://www.saucedemo.com/");
+      });
+      it('Reset app state button',  () => {
+        loginPage.open('');
+        loginPage.login('standard_user', 'secret_sauce');
+        inventoryPage.resetAppBtnClick();
+        expect(inventoryPage.numOfCart).not.toBe(1);
       });
 })
-*/
+
