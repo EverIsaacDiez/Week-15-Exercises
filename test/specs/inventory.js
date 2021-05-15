@@ -60,6 +60,7 @@ describe('Cart', () => {
         inventoryPage.fivethBtnAddToCartClick();
         inventoryPage.sixthBtnAddToCartClick();
         expect(parseInt(inventoryPage.numOfCart)).toBe(6);
+        //Remove from cart to next tests
         inventoryPage.firstBtnRemoveClick();
         inventoryPage.secondBtnRemoveClick();
         inventoryPage.thirdBtnRemoveClick();
@@ -84,6 +85,7 @@ describe('Cart', () => {
         expect(cartPage.cartList5).not.toBe('Sauce Labs Fleece Jacket');
         expect(cartPage.cartList5).toBe('Sauce Labs Onesie');
         loginPage.open('inventory.html');
+        //Remove from cart to next tests
         inventoryPage.secondBtnRemoveClick();
         inventoryPage.fivethBtnRemoveClick();
       });

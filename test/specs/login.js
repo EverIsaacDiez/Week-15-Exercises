@@ -1,3 +1,5 @@
+const { login } = require('../pageobjects/login.page');
+const loginPage = require('../pageobjects/login.page');
 const LoginPage = require('../pageobjects/login.page');
 
 describe('Standard user tests', () => {
@@ -45,15 +47,19 @@ describe('Problem user test',()=>{
     expect(LoginPage.srcOfProductPhoto).toBe("https://www.saucedemo.com/static/media/sl-404.168b1cce.jpg");
   });
 })
+
 /*
 describe('Performance user test',()=>{
   it('Login with performance_glitch_user',  () => {
     LoginPage.open('');
     LoginPage.login('performance_glitch_user', 'secret_sauce');
-    expect(browser).not.waitForDisplayed({timeout:1000})
+   // expect(browser).not.waitForDisplayed({timeout:3000})    
+
+    expect(browser.waitUntil(1, { timeout:5000, timeoutMsg:'tarda'})).toBe(1);
   });
 })
 */
+
 describe('Test with valid credentials', () => {
   it('Should login with standard_user',  () => {
     LoginPage.open('');
